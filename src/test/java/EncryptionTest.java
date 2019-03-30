@@ -1,7 +1,4 @@
-import encryption.EncryptDecrypt;
-import encryption.ROT13;
-import encryption.ROT18;
-import encryption.ROT47;
+import encryption.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -18,6 +15,14 @@ public class EncryptionTest {
 
         }return output;
     }*/
+    @Test
+    public void MyEnscrypt() {
+        char[] text = "Red fox jumpe a lot".toCharArray();
+        EncryptDecrypt encoder = new MyEnscrypt("passphrase".toCharArray());
+        char[] output = encoder.encrypt(text);
+        assertEquals("Text doesn't match expected result.", "Â×ﾭÖê﾿ÝÝØﾭÑﾸÞç", new String(output));
+    }
+
     @Test
     public void root13TestEnscyption2() {
         char[] text = "a".toCharArray();
