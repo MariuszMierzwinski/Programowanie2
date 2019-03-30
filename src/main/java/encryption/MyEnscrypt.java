@@ -6,8 +6,9 @@ public class MyEnscrypt implements EncryptDecrypt {
     public MyEnscrypt(char[] paswd) {
         this.paswd = paswd;
     }
-    private int iterator(char[] text,int i){
-        return (text.length>paswd.length) ? i%paswd.length:i;
+
+    private int iterator( int i) {
+        return i % paswd.length;
 
     }
 
@@ -15,14 +16,10 @@ public class MyEnscrypt implements EncryptDecrypt {
     public char[] encrypt(char[] text) {
         char[] output = text;
         for (int i = 0; i < text.length; i++) {
-            if (i < paswd.length) {
-                if (i % 2 == 0) {
-                    output[i] = (char) (output[i] + paswd[i]);
-                } else output[i] = (char) (output[i] - paswd[i]);
-            } else if (i % 2 == 0) {
-                output[i] = (char) (output[i] + paswd[iterator(text,i)]);
+            if (i % 2 == 0) {
+                output[i] = (char) (output[i] + paswd[iterator( i)]);
             } else {
-                output[i] = (char) (output[i] - paswd[iterator(text,i)]);
+                output[i] = (char) (output[i] - paswd[iterator( i)]);
             }
 
         }
