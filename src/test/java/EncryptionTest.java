@@ -11,15 +11,6 @@ import static org.junit.Assert.assertNotEquals;
 
 public class EncryptionTest {
 
-    /* @Override
-     *//* public char[] encrypt(char[] text){
-        char[] output = new char[text.length];
-        for (int i=0;i<text.length;i++) {
-            char c=text[i];
-            if
-
-        }return output;
-    }*/
     @Test
     public void DoubleEnscryptNotEqual() {
         char[] text = "Red fox jumpe a lot".toCharArray();
@@ -37,7 +28,6 @@ public class EncryptionTest {
         EncryptDecrypt encoder = new MyEnscrypt("passphrase".toCharArray());
         char[] output = encoder.decrypt(text);
         output = encoder.decrypt(output);
-
         assertNotEquals("Text doesn't match expected result.", "Red fox jumpe a lot", new String(output));
 
     }
