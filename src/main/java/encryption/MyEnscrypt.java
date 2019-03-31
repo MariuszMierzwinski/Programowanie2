@@ -7,19 +7,20 @@ public class MyEnscrypt implements EncryptDecrypt {
         this.paswd = paswd;
     }
 
-    private int iterator( int i) {
+    private int iterator(int i) {
         return i % paswd.length;
 
     }
+
 
     @Override
     public char[] encrypt(char[] text) {
         char[] output = text;
         for (int i = 0; i < text.length; i++) {
             if (i % 2 == 0) {
-                output[i] = (char) (output[i] + paswd[iterator( i)]);
+                output[i] = (char) (output[i] + paswd[iterator(i)]);
             } else {
-                output[i] = (char) (output[i] - paswd[iterator( i)]);
+                output[i] = (char) (output[i] - paswd[iterator(i)]);
             }
 
         }
@@ -30,6 +31,16 @@ public class MyEnscrypt implements EncryptDecrypt {
 
     @Override
     public char[] decrypt(char[] text) {
-        return new char[0];
+        char[] output = text;
+        for (int i = 0; i < text.length; i++) {
+            if (i % 2 == 0) {
+                output[i] = (char) (output[i] - paswd[iterator(i)]);
+            } else {
+                output[i] = (char) (output[i] + paswd[iterator(i)]);
+            }
+
+        }
+        return output;
+
     }
 }
